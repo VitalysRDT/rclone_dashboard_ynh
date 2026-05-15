@@ -5,7 +5,7 @@ name = "rclone Dashboard"
 description.en = "Real-time dashboard for monitoring rclone mounts, VFS cache, transfers, and operational health."
 description.fr = "Tableau de bord temps-réel pour surveiller les mounts rclone, le cache VFS, les transferts et la santé opérationnelle."
 
-version = "0.1.3~ynh1"
+version = "0.1.4~ynh1"
 
 maintainers = ["vitalys"]
 

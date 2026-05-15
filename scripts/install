@@ -24,13 +24,13 @@ ynh_print_info --message="Setting up Python virtualenv…"
 setup_python_venv
 
 ynh_print_info --message="Configuring nginx + systemd…"
-ynh_add_nginx_config
-ynh_add_systemd_config
+ynh_config_add_nginx
+ynh_config_add_systemd
 
 # Check rclone RC reachability (warn-only)
 check_rclone_rc "$rclone_rc_url"
 
 ynh_print_info --message="Starting the rclone Dashboard service…"
-ynh_systemd_action --service_name="$app" --action="start" --line_match="Listening at" --log_path="/var/log/$app/$app.log" --timeout=30 || true
+ynh_systemctl --service_name="$app" --action="start" --line_match="Listening at" --log_path="/var/log/$app/$app.log" --timeout=30 || true
 
 ynh_print_info --message="rclone Dashboard installed at https://$domain$path"
