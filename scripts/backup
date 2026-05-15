@@ -1,8 +1,6 @@
 #!/bin/bash
-source _common.sh
 source /usr/share/yunohost/helpers
 
-# Snapshot the install dir minus the venv (which we re-build on restore)
-ynh_backup --src_path="$install_dir/sources/data"
-ynh_backup --src_path="/etc/systemd/system/$app.service"
-ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
+ynh_backup "$install_dir/sources/data"
+ynh_backup "/etc/systemd/system/$app.service"
+ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
