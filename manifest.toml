@@ -5,15 +5,15 @@ name = "rclone Dashboard"
 description.en = "Real-time dashboard for monitoring rclone mounts, VFS cache, transfers, and operational health."
 description.fr = "Tableau de bord temps-réel pour surveiller les mounts rclone, le cache VFS, les transferts et la santé opérationnelle."
 
-version = "0.1.0~ynh1"
+version = "0.1.1~ynh1"
 
 maintainers = ["vitalys"]
 
 [upstream]
 license = "AGPL-3.0-or-later"
-website = "https://github.com/vitalys/rclone-dashboard"
-admindoc = "https://github.com/vitalys/rclone-dashboard/blob/main/doc/ADMIN.md"
-code = "https://github.com/vitalys/rclone-dashboard"
+website = "https://github.com/VitalysRDT/rclone-dashboard"
+admindoc = "https://github.com/VitalysRDT/rclone-dashboard/blob/main/doc/ADMIN.md"
+code = "https://github.com/VitalysRDT/rclone-dashboard"
 
 [integration]
 yunohost = ">= 12.0"
@@ -57,8 +57,8 @@ ram.runtime = "256M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/vitalys/rclone-dashboard/archive/refs/tags/v0.1.0.tar.gz"
-    sha256 = "PLACEHOLDER_REPLACE_AT_RELEASE_TIME"
+    url = "https://github.com/VitalysRDT/rclone-dashboard/archive/v0.1.0.tar.gz"
+    sha256 = "a3a7fd793164ce30ca24045ab66316bced953af1fdc7ccfbc30fc450af43354d"
     autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
