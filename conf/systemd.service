@@ -1,0 +1,43 @@
+[Unit]
+Description=rclone Dashboard - Web UI for monitoring rclone state
+Documentation=https://github.com/vitalys/rclone-dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=__APP__
+Group=__APP__
+WorkingDirectory=__INSTALL_DIR__
+Environment="PATH=__INSTALL_DIR__/venv/bin"
+Environment="RCLONE_RC_URL=__RCLONE_RC_URL__"
+Environment="POLL_INTERVAL_MS=__POLL_INTERVAL_MS__"
+Environment="DASHBOARD_DB_PATH=__INSTALL_DIR__/data/dashboard.sqlite"
+Environment="BASE_PATH=__PATH__"
+ExecStart=__INSTALL_DIR__/venv/bin/gunicorn \
+  --workers 2 \
+  --threads 4 \
+  --worker-class gthread \
+  --max-requests 1000 \
+  --max-requests-jitter 100 \
+  --bind 127.0.0.1:__PORT__ \
+  --access-logfile - \
+  --error-logfile - \
+  --timeout 30 \
+  app.main:app
+
+Restart=on-failure
+RestartSec=5s
+StandardOutput=append:/var/log/__APP__/__APP__.log
+StandardError=append:/var/log/__APP__/__APP__.log
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=__INSTALL_DIR__/data /var/log/__APP__
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LimitNOFILE=4096
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+#!/bin/bash
+source _common.sh
+source /usr/share/yunohost/helpers
+
+ynh_systemd_action --service_name="$app" --action="stop"
+ynh_remove_systemd_config
+ynh_remove_nginx_config
+
+# Remove log dir
+ynh_secure_remove --file="/var/log/$app"
+
+# Note: $install_dir + system_user + ports are auto-removed by YunoHost
+# based on manifest [resources] declarations.
+
+ynh_print_info --message="rclone Dashboard removed."

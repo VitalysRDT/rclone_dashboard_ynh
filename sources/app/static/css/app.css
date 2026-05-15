@@ -1,0 +1,33 @@
+/* rclone Dashboard custom CSS — minimal overrides on top of Tailwind/daisyUI. */
+
+html { scroll-behavior: smooth; }
+body { font-feature-settings: "rlig" 1, "calt" 1; }
+
+/* Smooth font for monospace numbers */
+.font-mono { font-variant-numeric: tabular-nums; }
+
+/* Subtle card hover */
+.card { transition: border-color 200ms ease; }
+.card:hover { border-color: hsl(var(--bc) / 0.2); }
+
+/* Progress bars: thinner, more polished */
+progress {
+  border-radius: 9999px;
+  overflow: hidden;
+  height: 0.5rem;
+}
+
+/* Tab indicator transition */
+nav button { transition: all 150ms ease; }
+
+/* Code-like text for paths */
+.font-mono { letter-spacing: -0.01em; }
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--bc) / 0.15); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--bc) / 0.3); }
+
+/* Focus rings */
+:focus-visible { outline: 2px solid hsl(var(--p)); outline-offset: 2px; border-radius: 4px; }

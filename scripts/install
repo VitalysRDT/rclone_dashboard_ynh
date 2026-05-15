@@ -1,0 +1,36 @@
+#!/bin/bash
+# YunoHost install script for rclone Dashboard.
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+# Manifest args (auto-populated by YunoHost from manifest.toml [install] section):
+#   $domain $path $init_main_permission $rclone_rc_url $poll_interval_ms
+# Auto-generated: $app $install_dir $port
+
+ynh_print_info --message="Fetching sources…"
+ynh_setup_source --dest_dir="$install_dir"
+
+# Data directory survives upgrade/uninstall (managed via backup script)
+mkdir -p "$install_dir/data"
+chown "$app:$app" "$install_dir/data"
+chmod 750 "$install_dir/data"
+
+# Log directory
+mkdir -p "/var/log/$app"
+chown "$app:$app" "/var/log/$app"
+
+ynh_print_info --message="Setting up Python virtualenv…"
+setup_python_venv
+
+ynh_print_info --message="Configuring nginx + systemd…"
+ynh_add_nginx_config
+ynh_add_systemd_config
+
+# Check rclone RC reachability (warn-only)
+check_rclone_rc "$rclone_rc_url"
+
+ynh_print_info --message="Starting the rclone Dashboard service…"
+ynh_systemd_action --service_name="$app" --action="start" --line_match="Listening at" --log_path="/var/log/$app/$app.log" --timeout=30 || true
+
+ynh_print_info --message="rclone Dashboard installed at https://$domain$path"
