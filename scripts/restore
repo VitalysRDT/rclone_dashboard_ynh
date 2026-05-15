@@ -3,12 +3,12 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 # Restore data snapshot
-ynh_restore_file --origin_path="$install_dir/data"
+ynh_restore_file --origin_path="$install_dir/sources/data"
 ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
 # Re-fetch sources and re-build venv (smaller backup, faster restore)
-ynh_setup_source --dest_dir="$install_dir" --keep="data/"
+ynh_setup_source --dest_dir="$install_dir" --keep="sources/data/"
 setup_python_venv
 
 systemctl daemon-reload

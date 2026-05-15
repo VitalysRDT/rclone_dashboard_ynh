@@ -7,11 +7,11 @@ After=network.target
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__INSTALL_DIR__
+WorkingDirectory=__INSTALL_DIR__/sources
 Environment="PATH=__INSTALL_DIR__/venv/bin"
 Environment="RCLONE_RC_URL=__RCLONE_RC_URL__"
 Environment="POLL_INTERVAL_MS=__POLL_INTERVAL_MS__"
-Environment="DASHBOARD_DB_PATH=__INSTALL_DIR__/data/dashboard.sqlite"
+Environment="DASHBOARD_DB_PATH=__INSTALL_DIR__/sources/data/dashboard.sqlite"
 Environment="BASE_PATH=__PATH__"
 ExecStart=__INSTALL_DIR__/venv/bin/gunicorn \
   --workers 2 \
@@ -34,7 +34,7 @@ NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectSystem=strict
 ProtectHome=yes
-ReadWritePaths=__INSTALL_DIR__/data /var/log/__APP__
+ReadWritePaths=__INSTALL_DIR__/sources/data /var/log/__APP__
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 LimitNOFILE=4096
 MemoryMax=256M

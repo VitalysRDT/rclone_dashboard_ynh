@@ -7,7 +7,7 @@ pkg_dependencies="python3 python3-pip python3-venv"
 setup_python_venv() {
   ynh_exec_as_app python3 -m venv "$install_dir/venv"
   ynh_exec_as_app "$install_dir/venv/bin/pip" install --upgrade pip wheel
-  ynh_exec_as_app "$install_dir/venv/bin/pip" install -r "$install_dir/requirements.txt"
+  ynh_exec_as_app "$install_dir/venv/bin/pip" install -r "$install_dir/sources/requirements.txt"
 }
 
 # Ensure rclone RC API is reachable before we declare the app installed.
