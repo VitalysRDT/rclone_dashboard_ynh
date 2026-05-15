@@ -12,4 +12,4 @@ ynh_setup_source --dest_dir="$install_dir" --keep="sources/data/"
 setup_python_venv
 
 systemctl daemon-reload
-ynh_systemctl --service_name="$app" --action="start"
+ynh_systemctl --service="$app" --action="start"

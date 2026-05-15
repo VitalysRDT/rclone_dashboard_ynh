@@ -31,6 +31,6 @@ ynh_config_add_systemd
 check_rclone_rc "$rclone_rc_url"
 
 ynh_print_info --message="Starting the rclone Dashboard service…"
-ynh_systemctl --service_name="$app" --action="start" --line_match="Listening at" --log_path="/var/log/$app/$app.log" --timeout=30 || true
+ynh_systemctl --service="$app" --action="start" --wait_until="Listening at" --log_path="/var/log/$app/$app.log" --timeout=30 || true
 
 ynh_print_info --message="rclone Dashboard installed at https://$domain$path"
