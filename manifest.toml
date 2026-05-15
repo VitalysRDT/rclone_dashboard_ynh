@@ -57,8 +57,8 @@ ram.runtime = "256M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/VitalysRDT/rclone_dashboard_ynh/archive/v0.1.8-pre.tar.gz"
-    sha256 = "4796578dbbb3ef7cc0b0f0e01c518e6bce6a845df2dd1247cd482733cf400a81"
+    url = "https://github.com/VitalysRDT/rclone_dashboard_ynh/archive/v0.1.9-pre.tar.gz"
+    sha256 = "5d35f4aee1635027a4405db68a8c2a5e525f5dfdcbd2ee0903483f783e057af5"
     autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
